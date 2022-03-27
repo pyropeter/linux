@@ -442,6 +442,13 @@
 		};
 	};
 
+	efuse@2922bc000 {
+		compatible = "apple,t6000-efuses", "apple,efuses";
+		reg = <0x2 0x922bc000 0x0 0x2000>;
+		#address-cells = <1>;
+		#size-cells = <1>;
+	};
+
 	dart_sio_0: iommu@39b004000 {
 		compatible = "apple,t6000-dart", "apple,dart";
 		reg = <0x3 0x9b004000 0x0 0x4000>;
