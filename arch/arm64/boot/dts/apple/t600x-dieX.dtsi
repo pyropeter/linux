@@ -131,6 +131,46 @@
 		iommus = <&DIE_NODE(dwc3_0_dart_0) 0>,
 			<&DIE_NODE(dwc3_0_dart_1) 1>;
 		power-domains = <&DIE_NODE(ps_atc0_usb)>;
+		resets = <&DIE_NODE(atcphy0)>;
+		phys = <&DIE_NODE(atcphy0) PHY_TYPE_USB2>, <&DIE_NODE(atcphy0) PHY_TYPE_USB3>;
+		phy-names = "usb2-phy", "usb3-phy";
+	};
+
+	DIE_NODE(atcphy0): phy@703000000 {
+		compatible = "apple,t8103-atcphy";
+		reg = <0x7 0x03000000 0x0 0x50000>,
+			<0x7 0x00000000 0x0 0x4000>,
+			<0x7 0x02a90000 0x0 0x4000>,
+			<0x7 0x02a84000 0x0 0x4000>;
+		reg-names = "core", "axi2af", "usb2phy",
+			"pipehandler";
+
+		#phy-cells = <1>;
+		#reset-cells = <0>;
+
+		nvmem-cells = <&atcphy0_aus_cmn_shm_vreg_trim>,
+			<&atcphy0_auspll_rodco_encap>,
+			<&atcphy0_auspll_rodco_bias_adjust>,
+			<&atcphy0_auspll_fracn_dll_start_capcode>,
+			<&atcphy0_auspll_dtc_vreg_adjust>,
+			<&atcphy0_cio3pll_dco_coarsebin0>,
+			<&atcphy0_cio3pll_dco_coarsebin1>,
+			<&atcphy0_cio3pll_dll_start_capcode>,
+			<&atcphy0_cio3pll_dtc_vreg_adjust>;
+		nvmem-cell-names =  "aus_cmn_shm_vreg_trim",
+			"auspll_rodco_encap",
+			"auspll_rodco_bias_adjust",
+			"auspll_fracn_dll_start_capcode",
+			"auspll_dtc_vreg_adjust",
+			"cio3pll_dco_coarsebin0",
+			"cio3pll_dco_coarsebin1",
+			"cio3pll_dll_start_capcode",
+			"cio3pll_dtc_vreg_adjust";
+
+		orientation-switch;
+		mode-switch;
+		accessory; // TODO: this sounds wrong but is required for the mux
+		power-domains = <&DIE_NODE(ps_atc0_usb)>;
 	};
 
 	DIE_NODE(dwc3_1_dart_0): iommu@b02f00000 {
@@ -161,6 +201,46 @@
 		role-switch-default-mode = "host";
 		iommus = <&DIE_NODE(dwc3_1_dart_0) 0>,
 			<&DIE_NODE(dwc3_1_dart_1) 1>;
+		power-domains = <&DIE_NODE(ps_atc1_usb)>;
+		resets = <&DIE_NODE(atcphy1)>;
+		phys = <&DIE_NODE(atcphy1) PHY_TYPE_USB2>, <&DIE_NODE(atcphy1) PHY_TYPE_USB3>;
+		phy-names = "usb2-phy", "usb3-phy";
+	};
+
+	DIE_NODE(atcphy1): phy@b03000000 {
+		compatible = "apple,t8103-atcphy";
+		reg = <0xb 0x03000000 0x0 0x50000>,
+			<0xb 0x00000000 0x0 0x4000>,
+			<0xb 0x02a90000 0x0 0x4000>,
+			<0xb 0x02a84000 0x0 0x4000>;
+		reg-names = "core", "axi2af", "usb2phy",
+			"pipehandler";
+
+		#phy-cells = <1>;
+		#reset-cells = <0>;
+
+		nvmem-cells = <&atcphy1_aus_cmn_shm_vreg_trim>,
+			<&atcphy1_auspll_rodco_encap>,
+			<&atcphy1_auspll_rodco_bias_adjust>,
+			<&atcphy1_auspll_fracn_dll_start_capcode>,
+			<&atcphy1_auspll_dtc_vreg_adjust>,
+			<&atcphy1_cio3pll_dco_coarsebin0>,
+			<&atcphy1_cio3pll_dco_coarsebin1>,
+			<&atcphy1_cio3pll_dll_start_capcode>,
+			<&atcphy1_cio3pll_dtc_vreg_adjust>;
+		nvmem-cell-names =  "aus_cmn_shm_vreg_trim",
+			"auspll_rodco_encap",
+			"auspll_rodco_bias_adjust",
+			"auspll_fracn_dll_start_capcode",
+			"auspll_dtc_vreg_adjust",
+			"cio3pll_dco_coarsebin0",
+			"cio3pll_dco_coarsebin1",
+			"cio3pll_dll_start_capcode",
+			"cio3pll_dtc_vreg_adjust";
+
+		orientation-switch;
+		mode-switch;
+		accessory; // TODO: this sounds wrong but is required for the mux
 		power-domains = <&DIE_NODE(ps_atc1_usb)>;
 	};
 
@@ -193,6 +273,46 @@
 		iommus = <&DIE_NODE(dwc3_2_dart_0) 0>,
 			<&DIE_NODE(dwc3_2_dart_1) 1>;
 		power-domains = <&DIE_NODE(ps_atc2_usb)>;
+		resets = <&DIE_NODE(atcphy2)>;
+		phys = <&DIE_NODE(atcphy2) PHY_TYPE_USB2>, <&DIE_NODE(atcphy2) PHY_TYPE_USB3>;
+		phy-names = "usb2-phy", "usb3-phy";
+	};
+
+	DIE_NODE(atcphy2): phy@f03000000 {
+		compatible = "apple,t8103-atcphy";
+		reg = <0xf 0x03000000 0x0 0x50000>,
+			<0xf 0x00000000 0x0 0x4000>,
+			<0xf 0x02a90000 0x0 0x4000>,
+			<0xf 0x02a84000 0x0 0x4000>;
+		reg-names = "core", "axi2af", "usb2phy",
+			"pipehandler";
+
+		#phy-cells = <1>;
+		#reset-cells = <0>;
+
+		nvmem-cells = <&atcphy2_aus_cmn_shm_vreg_trim>,
+			<&atcphy2_auspll_rodco_encap>,
+			<&atcphy2_auspll_rodco_bias_adjust>,
+			<&atcphy2_auspll_fracn_dll_start_capcode>,
+			<&atcphy2_auspll_dtc_vreg_adjust>,
+			<&atcphy2_cio3pll_dco_coarsebin0>,
+			<&atcphy2_cio3pll_dco_coarsebin1>,
+			<&atcphy2_cio3pll_dll_start_capcode>,
+			<&atcphy2_cio3pll_dtc_vreg_adjust>;
+		nvmem-cell-names =  "aus_cmn_shm_vreg_trim",
+			"auspll_rodco_encap",
+			"auspll_rodco_bias_adjust",
+			"auspll_fracn_dll_start_capcode",
+			"auspll_dtc_vreg_adjust",
+			"cio3pll_dco_coarsebin0",
+			"cio3pll_dco_coarsebin1",
+			"cio3pll_dll_start_capcode",
+			"cio3pll_dtc_vreg_adjust";
+
+		orientation-switch;
+		mode-switch;
+		accessory; // TODO: this sounds wrong but is required for the mux
+		power-domains = <&DIE_NODE(ps_atc2_usb)>;
 	};
 
 	DIE_NODE(dwc3_3_dart_0): iommu@1302f00000 {
@@ -223,5 +343,45 @@
 		role-switch-default-mode = "host";
 		iommus = <&DIE_NODE(dwc3_3_dart_0) 0>,
 			<&DIE_NODE(dwc3_3_dart_1) 1>;
+		power-domains = <&DIE_NODE(ps_atc3_usb)>;
+		resets = <&DIE_NODE(atcphy3)>;
+		phys = <&DIE_NODE(atcphy3) PHY_TYPE_USB2>, <&DIE_NODE(atcphy3) PHY_TYPE_USB3>;
+		phy-names = "usb2-phy", "usb3-phy";
+	};
+
+	DIE_NODE(atcphy3): phy@1303000000 {
+		compatible = "apple,t8103-atcphy";
+		reg = <0x13 0x03000000 0x0 0x50000>,
+			<0x13 0x00000000 0x0 0x4000>,
+			<0x13 0x02a90000 0x0 0x4000>,
+			<0x13 0x02a84000 0x0 0x4000>;
+		reg-names = "core", "axi2af", "usb2phy",
+			"pipehandler";
+
+		#phy-cells = <1>;
+		#reset-cells = <0>;
+
+		nvmem-cells = <&atcphy3_aus_cmn_shm_vreg_trim>,
+			<&atcphy3_auspll_rodco_encap>,
+			<&atcphy3_auspll_rodco_bias_adjust>,
+			<&atcphy3_auspll_fracn_dll_start_capcode>,
+			<&atcphy3_auspll_dtc_vreg_adjust>,
+			<&atcphy3_cio3pll_dco_coarsebin0>,
+			<&atcphy3_cio3pll_dco_coarsebin1>,
+			<&atcphy3_cio3pll_dll_start_capcode>,
+			<&atcphy3_cio3pll_dtc_vreg_adjust>;
+		nvmem-cell-names =  "aus_cmn_shm_vreg_trim",
+			"auspll_rodco_encap",
+			"auspll_rodco_bias_adjust",
+			"auspll_fracn_dll_start_capcode",
+			"auspll_dtc_vreg_adjust",
+			"cio3pll_dco_coarsebin0",
+			"cio3pll_dco_coarsebin1",
+			"cio3pll_dll_start_capcode",
+			"cio3pll_dtc_vreg_adjust";
+
+		orientation-switch;
+		mode-switch;
+		accessory; // TODO: this sounds wrong but is required for the mux
 		power-domains = <&DIE_NODE(ps_atc3_usb)>;
 	};
